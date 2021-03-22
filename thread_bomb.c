@@ -30,9 +30,9 @@ int main(int argc, char *argv[])
 
         if (pthread_create(&threads[number_of_threads], NULL, &thread_callback, NULL) != 0)
         {
-            printf("Number of threads: %d\n", number_of_threads);
-            printf("Processos Error ID: %d\n ", errno);
-            printf("Error message: %s\n", strerror(errno));
+            printf("Number of threads: %d\n", number_of_threads); //Número de processos criados: 32750
+            printf("Processos Error ID: %d\n ", errno);           // //ERROR 12 SIGSYS
+            printf("Error message: %s\n", strerror(errno));       //Cannot allocate memory
             pthread_exit(0);
         }
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
                 printf("Error getting the time\n");
 
             etime = (end.tv_sec + end.tv_nsec / 10E9) - (start.tv_sec + start.tv_nsec / 10E9);
-            printf("Time to create 1000 threads: %f\n", etime);
+            printf("Time to create 1000 threads: %f\n", etime); // tempo para criar 1000 novas threads: 0.000013
         }
 
         // free(threads);

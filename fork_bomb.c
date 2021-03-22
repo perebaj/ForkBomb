@@ -31,9 +31,10 @@ int main()
       }
       if (process_id == -1)
       {
-         printf("maximum number of processes: %d\n", process_numbers);
-         printf("Processos Error ID: %d\n ", errno);
-         printf("Error message: %s\n", strerror(errno));
+         printf("maximum number of processes: %d\n", process_numbers); //Número de processos criados: 32353
+         printf("Processos Error ID: %d\n ", errno);                   //ERROR 11: SIGEGV
+         printf("Error message: %s\n", strerror(errno));               //Resource temporarily unavailable
+         //Error is caused for a invalid memory reference
          exit(0);
       }
 
@@ -43,7 +44,7 @@ int main()
             printf("Error getting the time\n");
 
          etime = (end.tv_sec + end.tv_nsec / 10E9) - (start.tv_sec + start.tv_nsec / 10E9);
-         printf("Time to create 1000 new process: %f\n", etime); // time to create 1000
+         printf("Time to create 1000 new process: %f\n", etime); // tempo para criar 1000 novos processo: 0.000013s
       }
    }
 }
